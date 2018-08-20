@@ -13,6 +13,9 @@ public class Application {
 
 		Performer performer = (Performer) ctx.getBean("poeticDuke");
 		performer.perform();
+
+		Performer performer1 = (Performer) ctx.getBean("kenny2");
+		performer1.perform();
 		SpringApplication.run(Application.class, args);
 	}
 }

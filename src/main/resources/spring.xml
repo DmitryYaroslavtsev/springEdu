@@ -10,7 +10,38 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     </bean>
     <bean id="sonnet29" class="com.education.spring.spring.Sonnet29"/>
     <bean id="poeticDuke" class="com.education.spring.spring.PoeticJuggler">
-        <constructor-arg value="15" />
-        <constructor-arg ref="sonnet29"/>
+        <constructor-arg value="15"/>
+        <constructor-arg>
+            <bean class="com.education.spring.spring.Sonnet29"/>
+        </constructor-arg>
+    </bean>
+    <bean id="theStage" class="com.education.spring.spring.Stage"
+          factory-method="getInstance"/>
+
+    <bean id="auditorium"
+          class="com.education.spring.spring.Auditorium"
+          init-method="turnOnLights"
+          destroy-method="turnOffLights"/>
+
+    <bean id="kenny"
+          class="com.education.spring.spring.Instrumentalist">
+        <property name="song" value="Jingle Bells"/>
+        <property name="age" value="37"/>
+    </bean>
+
+    <bean id="saxophone" class="com.education.spring.spring.Saxophone"/>
+
+    <bean id="kenny2" class="com.education.spring.spring.Instrumentalist">
+        <property name="song" value="Jingle Bells" />
+        <property name="instrument" ref="piano" />
+    </bean>
+
+    <bean id="piano" class="com.education.spring.spring.Piano" />
+
+    <bean id="kenny3" class="com.education.spring.spring.Instrumentalist">
+        <property name="song" value="Jingle Bells" />
+        <property name="instrument" >
+            <bean class="com.education.spring.spring.Saxophone" />
+        </property>
     </bean>
 </beans>
