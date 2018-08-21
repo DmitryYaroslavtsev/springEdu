@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
@@ -32,16 +33,31 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
     <bean id="saxophone" class="com.education.spring.spring.Saxophone"/>
 
     <bean id="kenny2" class="com.education.spring.spring.Instrumentalist">
-        <property name="song" value="Jingle Bells" />
-        <property name="instrument" ref="piano" />
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument" ref="piano"/>
     </bean>
 
-    <bean id="piano" class="com.education.spring.spring.Piano" />
+    <bean id="piano" class="com.education.spring.spring.Piano"/>
 
     <bean id="kenny3" class="com.education.spring.spring.Instrumentalist">
-        <property name="song" value="Jingle Bells" />
-        <property name="instrument" >
-            <bean class="com.education.spring.spring.Saxophone" />
+        <property name="song" value="Jingle Bells"/>
+        <property name="instrument">
+            <bean class="com.education.spring.spring.Saxophone"/>
+        </property>
+    </bean>
+
+    <bean id="kenny4" class="com.education.spring.spring.Instrumentalist"
+          p:song="Jingle Bells"
+          p:instrument-ref="saxophone"/>
+
+    <bean id="hank"
+          class="com.education.spring.spring.OneManBand">
+        <property name="instruments">
+            <props>
+                <prop key="GUITAR">STRUM STRUM STRUM</prop>
+                <prop key="CYMBAL">CRASH CRASH CRASH</prop>
+                <prop key="HARMONICA" >HUM HUM HUM</prop>
+            </props>
         </property>
     </bean>
 </beans>
